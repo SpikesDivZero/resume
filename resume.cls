@@ -16,9 +16,11 @@
 %
 % Created by Trey Hunner and modified by www.LaTeXTemplates.com
 %
+% Further modified by Wesley Spikes for my own ends.
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesClass{resume}[2010/07/10 v0.9 Resume class]
+\ProvidesClass{resume}[2017/02/28 v0.9.1 Resume class]
 
 \LoadClass[11pt,letterpaper]{article} % Font size and paper type
 
@@ -121,6 +123,7 @@
   }{
   \end{list}
   \vspace{0.5em} % Some space after the list of bullet points
+  \pagebreak[2] % Encourage pagebreaks between jobs, instead of in the middle of our lists
 }
 
 % The below commands define the whitespace after certain things in the document - they can be \smallskip, \medskip or \bigskip
