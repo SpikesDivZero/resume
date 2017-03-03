@@ -1,0 +1,154 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Medium Length Professional CV
+% LaTeX Template
+% Version 2.0 (8/5/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Trey Hunner (http://www.treyhunner.com/)
+%
+% Important note:
+% This template requires the resume.cls file to be in the same directory as the
+% .tex file. The resume.cls file provides the resume style used for structuring the
+% document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{resume} % Use the custom resume.cls style
+
+\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
+
+\name{Wesley Spikes}
+\address{3767 Clarington Ave, Apt 320 \\ Los Angeles, CA 90034}
+\address{(909)~$\cdot$~815~$\cdot$~1079 \\ wesley.spikes@gmail.com}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	SUMMARY
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Summary}
+I'm just me. I like challenges. (FIXME)
+Seeks challenges and opportunities for growth.
+Handles ambiguous situations well, and can reduce them down to actionable tasks.
+Can juggle well when there's many things going on.
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	TECHNICAL STRENGTHS SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Technical Strengths}
+
+\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
+Computer Languages & Perl, Bash, Python \\
+Operating Systems & Linux (Debian, Ubuntu, Gentoo), OS X, Windows \\
+Software & Apache, Nginx, git, vim, MySQL \\
+\end{tabular}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Experience}
+
+\begin{rSubsection}{Personal Break}{Sep 2016 - Present}{}{}
+\item Took a 6 month break, to travel, recharge, and explore LA. Best decision.
+\item Learned some C\# and Unity to mentor my youngest brother, who wants to get into game development.
+\item Playing most of the puzzle games in my Steam backlog.
+%\item Reverse engineering games for fun. After beating a game, it's a fun challenge to reverse it and find little ways to tweak them. (FIXME: Comments below)
+%   Example projects: Cookie Clicker (simple/boring) and AdCap.
+%   AdCap had a non-standard LZF compression routine (slightly non-standard/buggy, as other lzf libs wouldn't decompress it), as well as writing a custom MITM server to "validate" support codes to give free resources.
+\item Set up a personal lab in my living room with 4 servers.
+%   Configured the lab's gateway server as a router w/ DHCP on the lab network
+%   Configured TFTP and DHCP server for bootstrapping bare metal machines
+\item Reverse engineering hardware/embedded firmware for fun.
+%   Goal is wanting to better understand RE'ing embedded systems
+%   Example projects: Sonos Play:1 (current) and Berg Little Printer (past)
+%   Sonos Play:1 firmware is hampered by not having a license for a good RE tool like IDA -- Hopper, Binary Ninja, and similar affordable tools don't do a good job of processing binaries for this arch (PowerPC Gen2 a la PowerQUICC II Pro). :\
+\end{rSubsection}
+
+%------------------------------------------------
+
+\begin{rSubsection}{DreamHost}{Feb 2015 - Aug 2016}{Senior/Lead Software Engineer}{Los Angeles, CA}
+\item Managed two direct reports.
+%  What about the mentoring I'd done? Worth calling out specifically?
+%  One was a Jr Dev, who I'd worked with to get them to leveled up to Dev.
+%  The other Jr was on track to level up when I left, and within a few months of my departure, has successfully gone to Dev. (This one probably needs some massaging, since it feels a bit wrong)
+%  Beyond simply mentoring in place, encouraging them to reach out to other teams directly and be confidence enough in that regard.
+\item Inter-team cooperation with Systems Engineering, Security, Technical Support, and Corporate IT.
+\item Managed core development infrastructure (including Gerrit, Jenkins, and other dev hosts)
+\item Entrusted with various sets of secure credentials. Primary maintainer of deployed credentials.
+\item Post-exploit incident response
+\item Modernized how the primary codebase and it's dependencies were deployed (fully documented), cutting deployment time down from 20 minutes to around 45 seconds.
+\item Technical lead on projects to integrate the security team's website malware scanner as well the DreamPress 2 and VPS Billing+SSD projects. (FIXME: I don't like the phrasing on this.)
+\item Order of Baku - More than 11 significant security vulnerabilities reported. (Stopped counting, lol.)
+\end{rSubsection}
+
+%------------------------------------------------
+
+\begin{rSubsection}{DreamHost}{Jan 2011 - Feb 2015}{Software Engineer}{Los Angeles, CA}
+\item Configuration management a la Chef
+\item Projects: (FIXME: Decide on some projects to highlight from the comments below)
+%   Dedi Relaunch
+%   ETL and report building for billing systems (chart.io)
+%   Replicon integration (maybe. that was a nightmare project)
+%   mod_pagespeed launch
+%     Google launched it with GoDaddy announced as a launch partner. While Google was still "working with GoDaddy" to roll it out it, our team managed to test it and launch it, beating GoDaddy to market.
+%     https://www.dreamhost.com/blog/2010/11/04/mod_pagespeed-now-available/
+%   Svn->Git transition (from end-to-end -- docs, support, migration itself, etc)
+%   LogicBoxes (maybe. that was a nightmare project)
+\item Major contributions to the foundations/core of a old codebase (1997), without breaking production.
+%    Proud of this, given the age and the fact that DH doesn't have good testing overall. (FIXME: Phrasing, also see the comments below.)
+%   Object->_classdef (deprecating and safely removing v0 and v1 classdefs, with no errors, issues, or breakage)
+%   Object->AUTOLOAD (deprecating and safely removing runtime accessor generation from a large amount of the codebase; project was still in progress at the time I left)
+%   Nza->AjaxStep (making Ajax support a first-class citizen of the in-house web framework, without breaking existing code -- essentially converting a hacked-in only-sometimes-working bug -- no joke, a bug -- to an actual feature.
+%   Nza -- steps can now 'use strict', which wasn't possible before. Code without 'use strict' in Perl land is a pretty massive issue, leading to many a . In the process of migrating existing steps to this new system, we discovered quite a few potential security issues that we were able to fix before they were ever discovered.
+%   Controllers / central launcher / servicectl
+%   Services -- migrated executable commands to an actual naming prefix to ensure that code isn't inadvertently and inappropriately executed, while still not breaking old code (sc_renamed)
+\item Notable contributions to the billing systems, improving it's resilience and extensibility.
+\item Throughly documented how the fraud detection systems worked and what it checked for.
+%   That billing disaster that took a couple weeks to clean up (INVNUM, or Merchant Invoice Number, being documented as Optional in the PFPro docs, but the library we were using was using it in a rather terribad way.)
+\item Researched and documented tons of obscure parameters and features of the systems that we'd depended on without knowing what they actually did or how they worked.
+\item Panel Sec Improvements
+\item Audits -- for financial, security, admin, business, whatever
+\item Introduced and implemented CI processes (from end-to-end -- implementation, buy-in, support, etc etc)
+\end{rSubsection}
+
+%------------------------------------------------
+
+\begin{rSubsection}{DreamHost}{Nov 2009 - Jan 2011}{Technical Support}{Los Angeles, CA}
+\item In these days, Support was functionally similar to that of Junior Systems Admin.
+\item Specialized in tackling problems others avoided, where it was difficult to find the root cause.
+% For example, when a customer's databases all disappeared on a routine mysqld restart, successfully locating, restoring, and sending a summary on what went wrong.
+\item Diagnosing loady systems and troubleshooting customer websites.
+\item Configuring systems - Linux-VServer, DNS, Apache, Nginx, users, and PHP.
+\item Helping customers with a 99\% satisfaction rate.
+\end{rSubsection}
+
+%------------------------------------------------
+
+\begin{rSubsection}{Page Provider}{Dec 2007 - Nov 2009}{Systems Admin}{Rancho Cucamonga, CA}
+\item Small, 1-rack hosting provider.
+\item Building and deploying custom kernels and software for colo'd customers.
+\item Provisioning and deploying servers and services.
+\item Configuration and management of Apache, users and databases.
+\end{rSubsection}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
