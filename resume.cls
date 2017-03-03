@@ -27,8 +27,10 @@
 \usepackage[parfill]{parskip} % Remove paragraph indentation
 \usepackage{array} % Required for boldface (\bf and \bfseries) tabular columns
 \usepackage{ifthen} % Required for ifthenelse statements
+\usepackage{lastpage} % Required for header (page X of Y)
+\usepackage{fancyhdr} % Required for header
 
-\pagestyle{empty} % Suppress page numbers
+\pagestyle{fancy} % Disables built-in page numbering, and let's us use our own.
 
 %----------------------------------------------------------------------------------------
 %	HEADINGS COMMANDS: Commands for printing name and address
@@ -74,12 +76,35 @@
   \endgroup
 }
 
+\def \printpageheader {
+  \fancyhf{}
+
+  % Silence a warning where fancyhdr is auto-growing this to 13.5999
+  \headheight 13.6pt
+
+  % I'm ashamed to say, I don't understand how this fixes it, but this does fix the
+  % issue where the header isn't full-width on the second (and likely beyond) pages.
+  % I'm estimating that this forces fancyhdr to recalculate based on the updated
+  % geometry since it was first loaded?
+  \fancyheadoffset[lh]{0pt}%
+
+  % FIXME: The "~ \\ ~ \\" here is to force the header to be ~ 12pt further down, so that
+  % the header prints right (can't be at top of sheet). This isn't really ideal, but I don't know
+  % of a better fix right now.
+  \lhead{~ \\ ~ \\ \@name}
+  \rhead{~ \\ ~ \\ \thepage\ of \pageref{LastPage}}
+
+  % The first page won't have a header, since it has the name on it already.
+  \thispagestyle{empty}
+}
+
 %----------------------------------------------------------------------------------------
 %	PRINT THE HEADING LINES
 %----------------------------------------------------------------------------------------
 
 \let\ori@document=\document
 \renewcommand{\document}{
+  \printpageheader % Add the header first.
   \ori@document  % Begin document
   \printname % Print the name specified with \name
   \@ifundefined{@addressone}{}{ % Print the first address if specified
