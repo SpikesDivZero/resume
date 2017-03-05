@@ -38,10 +38,8 @@
 %----------------------------------------------------------------------------------------
 
 \begin{rSection}{Summary}
-I'm just me. I like challenges. (FIXME)
-Seeks challenges and opportunities for growth.
-Handles ambiguous situations well, and can reduce them down to actionable tasks.
-Can juggle well when there's many things going on.
+I'm just me; I like challenges. I'm for an opportunity for growth, I handle ambiguous situations well, and I can break down complex problems into actionable tasks.
+% FIXME: Maybe include something about successfully juggling multiple things going on at the same time?
 \end{rSection}
 
 %----------------------------------------------------------------------------------------
@@ -51,9 +49,10 @@ Can juggle well when there's many things going on.
 \begin{rSection}{Technical Strengths}
 
 \begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
-Computer Languages & Perl, Bash, Python \\
+Computer Languages & Perl, Bash, Python, Ruby, \LaTeX \\
 Operating Systems & Linux (Debian, Ubuntu, Gentoo), OS X, Windows \\
-Software & Apache, Chef, Nginx, git, vim, MySQL \\
+Software & Apache, Chef, Nginx, git, vim, MySQL, Jenkins, Gerrit, KVM \\
+Concepts & Information Security, Web Application Security
 \end{tabular}
 
 \end{rSection}
@@ -65,12 +64,17 @@ Software & Apache, Chef, Nginx, git, vim, MySQL \\
 \begin{rSection}{Experience}
 
 \begin{rSubsection}{Personal Break}{Sep 2016 - Present}{}{}
+% FIXME: KF recommends something other than "Personal Break" -- maybe "Freelance"
+%    "and make the stuff you were doing a bit more formal"
+%    "when someone asks, you can go into detail, but at first glance that might scare someone off"
+%    "at least, worded that way, it might spook someone"
 \item Took a 6 month break, to travel, recharge, and explore LA. Best decision.
 \item Learned some C\# and Unity to mentor my youngest brother, who wants to get into game development.
-\item Playing most of the puzzle games in my Steam backlog.
+%\item Playing most of the puzzle games in my Steam backlog. (FIXME: Maybe don't include)
 %\item Reverse engineering games for fun. After beating a game, it's a fun challenge to reverse it and find little ways to tweak them. (FIXME: Comments below)
 %   Example projects: Cookie Clicker (simple/boring) and AdCap.
 %   AdCap had a non-standard LZF compression routine (slightly non-standard/buggy, as other lzf libs wouldn't decompress it), as well as writing a custom MITM server to "validate" support codes to give free resources.
+%    Not a game, but I also recently RE'd Charles Proxy (which I already lawfully purchased -- I'm only in it for the challenge) and wrote a keygen for it, because why not. The keygen source was immediately put into an encrypted archive volume after it was confirmed working, not to be distributed, because ethics.
 \item Set up a personal lab in my living room with 4 servers.
 %   Configured the lab's gateway server as a router w/ DHCP on the lab network
 %   Configured TFTP and DHCP server for bootstrapping bare metal machines
@@ -93,15 +97,18 @@ Software & Apache, Chef, Nginx, git, vim, MySQL \\
 \item Entrusted with various sets of secure credentials. Primary maintainer of deployed credentials.
 \item Post-exploit incident response
 \item Modernized how the primary codebase and it's dependencies were deployed (fully documented), cutting deployment time down from 20 minutes to around 45 seconds.
-\item Technical lead on projects to integrate the security team's website malware scanner as well the DreamPress 2 and VPS Billing+SSD projects. (FIXME: I don't like the phrasing on this.)
-\item Order of Baku - More than 11 significant security vulnerabilities reported. (Stopped counting, lol.)
+\item Technical and architectural lead on the DreamPress 2, VPS-SSD, and Malware Remover projects.
+\item Order of Baku - Very active in internal bug bounty program, reporting several notable issues.
+%    More than 11 significant security vulnerabilities reported before we Stopped counting, lol.
 \end{rSubsection}
 
 %------------------------------------------------
 
 \begin{rSubsection}{DreamHost}{Jan 2011 - Feb 2015}{Software Engineer}{Los Angeles, CA}
 \item Configuration management a la Chef
-\item Projects: (FIXME: Decide on some projects to highlight from the comments below)
+\item Projects included the launch of mod\_pagespeed (beating competitors to market) and the transition from subversion to git (including documentation and internal support).
+% FIXME: Phrasing
+% Other projects that I can remember from this period:
 %   Dedi Relaunch
 %   ETL and report building for billing systems (chart.io)
 %   Replicon integration (maybe. that was a nightmare project)
@@ -110,7 +117,7 @@ Software & Apache, Chef, Nginx, git, vim, MySQL \\
 %     https://www.dreamhost.com/blog/2010/11/04/mod_pagespeed-now-available/
 %   Svn->Git transition (from end-to-end -- docs, support, migration itself, etc)
 %   LogicBoxes (maybe. that was a nightmare project)
-\item Major contributions to the foundations/core of a old codebase (1997), without breaking production.
+\item Major contributions to the foundations/core of an old codebase (1997), without breaking production.
 %    Proud of this, given the age and the fact that DH doesn't have good testing overall. (FIXME: Phrasing, also see the comments below.)
 %   Object->_classdef (deprecating and safely removing v0 and v1 classdefs, with no errors, issues, or breakage)
 %   Object->AUTOLOAD (deprecating and safely removing runtime accessor generation from a large amount of the codebase; project was still in progress at the time I left)
@@ -121,10 +128,10 @@ Software & Apache, Chef, Nginx, git, vim, MySQL \\
 \item Notable contributions to the billing systems, improving it's resilience and extensibility.
 \item Throughly documented how the fraud detection systems worked and what it checked for.
 %   That billing disaster that took a couple weeks to clean up (INVNUM, or Merchant Invoice Number, being documented as Optional in the PFPro docs, but the library we were using was using it in a rather terribad way.)
-\item Researched and documented tons of obscure parameters and features of the systems that we'd depended on without knowing what they actually did or how they worked.
-\item Panel Sec Improvements
-\item Audits -- for financial, security, admin, business, whatever
-\item Introduced and implemented CI processes (from end-to-end -- implementation, buy-in, support, etc etc)
+\item Researched and documented many obscure parameters and features of the systems that we'd depended on without knowing what they actually did or how they worked.
+\item Fixed several security issues in the codebase.
+%\item Audits -- for financial, security, admin, business, whatever
+\item Introduced and implemented CI processes, from end-to-end (implementation, buy-in, support, etc etc)
 \end{rSubsection}
 
 %------------------------------------------------
@@ -142,7 +149,7 @@ Software & Apache, Chef, Nginx, git, vim, MySQL \\
 
 \begin{rSubsection}{Page Provider}{Dec 2007 - Nov 2009}{Systems Admin}{Rancho Cucamonga, CA}
 \item Small, 1-rack hosting provider.
-\item Building and deploying custom kernels and software for colo'd customers.
+\item Building and deploying custom kernels and software for colocated customers.
 \item Provisioning and deploying servers and services.
 \item Configuration and management of Apache, users and databases.
 \end{rSubsection}
