@@ -52,7 +52,7 @@ I'm just me; I like challenges. I'm for an opportunity for growth, I handle ambi
 Computer Languages & Perl, Bash, Python, Ruby, \LaTeX \\
 Operating Systems & Linux (Debian, Ubuntu, Gentoo), OS X, Windows \\
 Software & Apache, Chef, Nginx, git, vim, MySQL, Jenkins, Gerrit, KVM \\
-Concepts & Information Security, Web Application Security
+Concepts & Web Application Security, Configuration Management
 \end{tabular}
 
 \end{rSection}
@@ -78,7 +78,7 @@ Concepts & Information Security, Web Application Security
 \item Set up a personal lab in my living room with 4 servers.
 %   Configured the lab's gateway server as a router w/ DHCP on the lab network
 %   Configured TFTP and DHCP server for bootstrapping bare metal machines
-\item Reverse engineering hardware/embedded firmware for fun.
+\item Reverse engineering software and embedded firmware for fun.
 %   Goal is wanting to better understand RE'ing embedded systems
 %   Example projects: Sonos Play:1 (current) and Berg Little Printer (past)
 %   Sonos Play:1 firmware is hampered by not having a license for a good RE tool like IDA -- Hopper, Binary Ninja, and similar affordable tools don't do a good job of processing binaries for this arch (PowerPC Gen2 a la PowerQUICC II Pro). :\
@@ -92,11 +92,11 @@ Concepts & Information Security, Web Application Security
 %  One was a Jr Dev, who I'd worked with to get them to leveled up to Dev.
 %  The other Jr was on track to level up when I left, and within a few months of my departure, has successfully gone to Dev. (This one probably needs some massaging, since it feels a bit wrong)
 %  Beyond simply mentoring in place, encouraging them to reach out to other teams directly and be confidence enough in that regard.
-\item Inter-team cooperation with Systems Engineering, Security, Technical Support, and Corporate IT.
-\item Managed core development infrastructure (including Gerrit, Jenkins, and other dev hosts)
+\item Inter-team coordination with Systems Engineering, Security, Technical Support, and Corporate IT.
+\item Managed core development infrastructure including Gerrit and Jenkins.
 \item Entrusted with various sets of secure credentials. Primary maintainer of deployed credentials.
-\item Post-exploit incident response
-\item Modernized how the primary codebase and it's dependencies were deployed (fully documented), cutting deployment time down from 20 minutes to around 45 seconds.
+\item Post-exploit incident response.
+\item Modernized deployment of the primary codebase and it's dependencies (fully documented), cutting deployment time down from 20 minutes to around 45 seconds.
 \item Technical and architectural lead on the DreamPress 2, VPS-SSD, and Malware Remover projects.
 \item Order of Baku - Very active in internal bug bounty program, reporting several notable issues.
 %    More than 11 significant security vulnerabilities reported before we Stopped counting, lol.
@@ -105,7 +105,7 @@ Concepts & Information Security, Web Application Security
 %------------------------------------------------
 
 \begin{rSubsection}{DreamHost}{Jan 2011 - Feb 2015}{Software Engineer}{Los Angeles, CA}
-\item Configuration management a la Chef
+\item Configuration management using both Chef and our in-house system.
 \item Projects included the launch of mod\_pagespeed (beating competitors to market) and the transition from subversion to git (including documentation and internal support).
 % FIXME: Phrasing
 % Other projects that I can remember from this period:
@@ -118,6 +118,7 @@ Concepts & Information Security, Web Application Security
 %   Svn->Git transition (from end-to-end -- docs, support, migration itself, etc)
 %   LogicBoxes (maybe. that was a nightmare project)
 \item Major contributions to the foundations/core of an old codebase (1997), without breaking production.
+% FIXME: Improve the language at the end of the sentence, shift towards positive language rather than negative.
 %    Proud of this, given the age and the fact that DH doesn't have good testing overall. (FIXME: Phrasing, also see the comments below.)
 %   Object->_classdef (deprecating and safely removing v0 and v1 classdefs, with no errors, issues, or breakage)
 %   Object->AUTOLOAD (deprecating and safely removing runtime accessor generation from a large amount of the codebase; project was still in progress at the time I left)
@@ -126,19 +127,19 @@ Concepts & Information Security, Web Application Security
 %   Controllers / central launcher / servicectl
 %   Services -- migrated executable commands to an actual naming prefix to ensure that code isn't inadvertently and inappropriately executed, while still not breaking old code (sc_renamed)
 \item Notable contributions to the billing systems, improving it's resilience and extensibility.
-\item Throughly documented how the fraud detection systems worked and what it checked for.
+\item Throughly documented how the fraud detection systems worked.
 %   That billing disaster that took a couple weeks to clean up (INVNUM, or Merchant Invoice Number, being documented as Optional in the PFPro docs, but the library we were using was using it in a rather terribad way.)
-\item Researched and documented many obscure parameters and features of the systems that we'd depended on without knowing what they actually did or how they worked.
-\item Fixed several security issues in the codebase.
+\item Researched and documented many obscure settings and flags of the systems that we had previously depended without knowing what they did.
+\item Fixed many security issues in the codebase.
 %\item Audits -- for financial, security, admin, business, whatever
-\item Introduced and implemented CI processes, from end-to-end (implementation, buy-in, support, etc etc)
+\item Introduced CI processes from end-to-end -- initial research/prototyping, getting buy-in, implementation, training, and finally supporting the new system.
 \end{rSubsection}
 
 %------------------------------------------------
 
 \begin{rSubsection}{DreamHost}{Nov 2009 - Jan 2011}{Technical Support}{Los Angeles, CA}
 \item In these days, Support was functionally similar to that of Junior Systems Admin.
-\item Specialized in tackling problems others avoided, where it was difficult to find the root cause.
+\item Specialized in tackling problems others avoided, especially where it was difficult to find the root cause.
 % For example, when a customer's databases all disappeared on a routine mysqld restart, successfully locating, restoring, and sending a summary on what went wrong.
 \item Diagnosing loady systems and troubleshooting customer websites.
 \item Configuring systems - Linux-VServer, DNS, Apache, Nginx, users, and PHP.
