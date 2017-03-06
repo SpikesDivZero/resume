@@ -76,6 +76,12 @@
   \endgroup
 }
 
+%----------------------------------------------------------------------------------------
+%	PRINT THE HEADING LINES
+%----------------------------------------------------------------------------------------
+
+% This must be called by the document start (below here), so that it's always
+% printed on the first page. This is because we use \thispagestyle here.
 \def \printpageheader {
   \fancyhf{}
 
@@ -97,10 +103,6 @@
   % The first page won't have a header, since it has the name on it already.
   \thispagestyle{empty}
 }
-
-%----------------------------------------------------------------------------------------
-%	PRINT THE HEADING LINES
-%----------------------------------------------------------------------------------------
 
 \let\ori@document=\document
 \renewcommand{\document}{
