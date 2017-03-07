@@ -26,8 +26,6 @@
 \documentclass{resume} % Use the custom resume.cls style
 
 \usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
-\usepackage{draftwatermark} % FIXME: DRAFT
-\usepackage{datetime2} % FIXME: DRAFT
 
 \name{Wesley Spikes}
 \address{3767 Clarington Ave, Apt 320 \\ Los Angeles, CA 90034}
@@ -35,11 +33,7 @@
 
 \begin{document}
 
-% FIXME: DRAFT
-\SetWatermarkText{DRAFT \DTMnow}
-\SetWatermarkScale{2}
-\SetWatermarkColor[rgb]{0.8,0.8,0.8}
-% FIXME: DRAFT
+\printdraftwatermark % DRAFT
 
 %----------------------------------------------------------------------------------------
 %	SUMMARY

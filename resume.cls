@@ -29,6 +29,8 @@
 \usepackage{ifthen} % Required for ifthenelse statements
 \usepackage{lastpage} % Required for header (page X of Y)
 \usepackage{fancyhdr} % Required for header
+\usepackage{draftwatermark} % Required for draft watermark.
+\usepackage{datetime2} % Required for draft watermark.
 
 \pagestyle{fancy} % Disables built-in page numbering, and let's us use our own.
 
@@ -115,6 +117,20 @@
     \printaddress{\@addresstwo}}
      \@ifundefined{@addressthree}{}{ % Print the third address if specified
     \printaddress{\@addressthree}}
+}
+
+%----------------------------------------------------------------------------------------
+%	DRAFT WATERMARKING
+%----------------------------------------------------------------------------------------
+
+% Call this to print a watermark on every page with the date and time,
+% clearly tagging the document as a draft. Date and time is just so I can
+% keep track of which draft is which. (I'm re-using the backside of printed
+% drafts when reviewing/editing.)
+\def \printdraftwatermark {
+  \SetWatermarkText{DRAFT \DTMnow}
+  \SetWatermarkScale{2}
+  \SetWatermarkColor[rgb]{0.8,0.8,0.8}
 }
 
 %----------------------------------------------------------------------------------------
