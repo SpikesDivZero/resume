@@ -29,7 +29,7 @@
 \usepackage{ifthen} % Required for ifthenelse statements
 \usepackage{lastpage} % Required for header (page X of Y)
 \usepackage{fancyhdr} % Required for header
-\usepackage{draftwatermark} % Required for draft watermark.
+\usepackage[nostamp]{draftwatermark} % Required for draft watermark.
 \usepackage{datetime2} % Required for draft watermark.
 
 \pagestyle{fancy} % Disables built-in page numbering, and let's us use our own.
@@ -131,6 +131,7 @@
   \SetWatermarkText{DRAFT \DTMnow}
   \SetWatermarkScale{2}
   \SetWatermarkColor[rgb]{0.8,0.8,0.8}
+  \@sc@wm@stamptrue
 }
 
 %----------------------------------------------------------------------------------------
