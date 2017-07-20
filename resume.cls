@@ -24,6 +24,8 @@
 
 \LoadClass[11pt,letterpaper]{article} % Font size and paper type
 
+\usepackage[realmainfile]{currfile}
+
 \usepackage[parfill]{parskip} % Remove paragraph indentation
 \usepackage{array} % Required for boldface (\bf and \bfseries) tabular columns
 \usepackage{ifthen} % Required for ifthenelse statements
@@ -31,6 +33,7 @@
 \usepackage{fancyhdr} % Required for header
 \usepackage[nostamp]{draftwatermark} % Required for draft watermark.
 \usepackage{datetime2} % Required for draft watermark.
+\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
 
 \pagestyle{fancy} % Disables built-in page numbering, and let's us use our own.
 
@@ -117,6 +120,12 @@
     \printaddress{\@addresstwo}}
      \@ifundefined{@addressthree}{}{ % Print the third address if specified
     \printaddress{\@addressthree}}
+
+  % If the jobname is the same as the *.tex filename, then we're in draft mode,
+  % most likely editing in TeXShop.
+  \ifcurrfilebase{\jobname}{
+    \printdraftwatermark
+  }
 }
 
 %----------------------------------------------------------------------------------------
@@ -177,6 +186,30 @@
     \itemsep -0.5em \vspace{-0.5em} % Compress items in list together for aesthetics
 }{
   \end{list}
+}
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE VARIANT SUPPORT
+%----------------------------------------------------------------------------------------
+
+% And we'll use this to include job highlights for each position.
+\let \ResumeVariant \relax
+\newcommand{\SetResumeVariant}[1] {
+  % If the jobname is the same as the *.tex filename, then we're in draft mode,
+  % most likely editing in TeXShop.
+  \ifcurrfilebase{\jobname}{
+    \def \ResumeVariant {#1}
+  }{
+    \def \ResumeVariant {\jobname}
+  }
+}
+
+\newcommand{\rInputSubsectionHighlights}[1] {
+  \IfFileExists{./inc/#1/\ResumeVariant.tex}{
+    \input{./inc/#1/\ResumeVariant}
+  }{
+    \input{./inc/#1/generic}
+  }
 }
 
 % The below commands define the whitespace after certain things in the document - they can be \smallskip, \medskip or \bigskip

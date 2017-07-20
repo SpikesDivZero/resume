@@ -29,15 +29,17 @@
 
 \documentclass{resume} % Use the custom resume.cls style
 
-\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
-
 \name{Wesley Spikes}
 \address{3767 Clarington Ave, Apt 320 \\ Los Angeles, CA 90034}
 \address{909.815.1079 \\ wesley.spikes@gmail.com}
 
+% The hard-coded value is used by resume.cls when in draft mode (jobname == filename).
+% Otherwise, we use \jobname (set on the command line)
+\SetResumeVariant{in-editor}
+
 \begin{document}
 
-% \printdraftwatermark % DRAFT
+
 
 %----------------------------------------------------------------------------------------
 %	SUMMARY
@@ -74,41 +76,19 @@ Concepts & Application Security, CI/CD, Systems Configuration
 % with the exception of the personal lab, since it's completed and working.
 
 \begin{rSubsection}{Sabbatical}{Sep 2016 - Present}{}{}
-\item Successfully achieved many of the goals personally set at DreamHost; took a six-month sabbatical.
-\begin{rSubsectionSublist}
-  \item Testing 1
-  \item Testing 2
-\end{rSubsectionSublist}
-\item Learning C\# and Unity to mentor someone new to development.
-\item Set up a personal lab within home office including four physical servers.
-\item Reverse engineering software and embedded firmware.
+\rInputSubsectionHighlights{2016-sabbatical}
 \end{rSubsection}
 
 %------------------------------------------------
 
 \begin{rSubsection}{DreamHost}{Oct 2014 - Aug 2016}{Senior/Lead Software Engineer}{Los Angeles, CA}
-\item Managed two direct reports.
-\item Coordinated with other teams including Systems Engineering, Security, Support, and Corporate IT.
-\item Managed core development infrastructure, including Gerrit and Jenkins.
-\item Entrusted with various sets of secure credentials. Primary maintainer of deployed credentials.
-\item Post-exploit incident response.
-\item Modernized deployment of the primary codebase and its dependencies (fully documented), cutting deployment time down from 20 minutes to around 45 seconds.
-\item Technical and architectural lead on the DreamPress 2, VPS-SSD, and Malware Remover projects.
-\item Very active in internal bug bounty program; reported several notable issues.
+\rInputSubsectionHighlights{2016-dreamhost-srdev}
 \end{rSubsection}
 
 %------------------------------------------------
 
 \begin{rSubsection}{DreamHost}{Jan 2011 - Oct 2014}{Software Engineer}{Los Angeles, CA}
-\item Configuration management using both Chef and in-house systems.
-\item Projects included the launch of mod\_pagespeed (beat competitors to market) and the transition from subversion to git (including documentation and internal support).
-\item Major contributions to the foundations/core of an old codebase (1997), without breaking production.
-\item Notable contributions to the billing systems, thereby improving its resilience and extensibility.
-\item Created detailed documented how the fraud detection systems worked.
-\item Researched and documented many obscure settings and flags of the systems.
-\item Fixed multiple security issues in the codebase.
-\item Introduced CI processes from end-to-end, including: initial research/prototyping, getting buy-in, \\ implementation, training, and supporting the new system.
-% ^ Forced line wrap to avoid "im-{\n}plementation", which looked weird to me.
+\rInputSubsectionHighlights{2014-dreamhost-dev}
 \end{rSubsection}
 
 %------------------------------------------------

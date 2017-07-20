@@ -2,3 +2,4 @@
 *.aux
 *.log
 *.synctex*
+/spikes.pdf
