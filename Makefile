@@ -1,4 +1,4 @@
-PDFLATEX := /usr/local/texlive/2016/bin/x86_64-darwin/pdflatex
+PDFLATEX := /usr/local/texlive/2017/bin/x86_64-darwin/pdflatex
 
 .PHONY: default clean commit publish
 
