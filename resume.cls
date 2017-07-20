@@ -170,6 +170,15 @@
   \pagebreak[2] % Encourage pagebreaks between jobs, instead of in the middle of our lists
 }
 
+% A simple \begin{list} doesn't work in a rSubsection, so we'll wrap it up all necessary
+% formatting like so. There's got to be a better way to do this, right?
+\newenvironment{rSubsectionSublist}[0] {
+  \begin{list}{$\cdot$}{\leftmargin=2.0em} % \cdot used for bullets, no indentation
+    \itemsep -0.5em \vspace{-0.5em} % Compress items in list together for aesthetics
+}{
+  \end{list}
+}
+
 % The below commands define the whitespace after certain things in the document - they can be \smallskip, \medskip or \bigskip
 \def\namesize{\huge} % Size of the name at the top of the document
 \def\addressskip{\smallskip} % The space between the two address (or phone/email) lines

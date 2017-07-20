@@ -1,5 +1,4 @@
 # Shit created by TeXShop/pdflatex
 *.aux
 *.log
-*.synctex.gz
-*.synctex.gz(busy)
+*.synctex*
