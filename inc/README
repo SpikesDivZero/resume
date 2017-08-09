@@ -1,0 +1,8 @@
+Folders here are named in the format of:
+  {StartYear}-{Company}-{RoleCode}
+
+The use of StartYear, in lieu of EndYear, is to better support current jobs.
+
+If we were using EndYear, we'd probably use "Current" instead of a year. In
+such, when moving on to the next job, we'd have to rename a folder, making for
+more work.
