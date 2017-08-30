@@ -204,7 +204,7 @@
   }
 }
 
-\newcommand{\rInputSubsectionHighlights}[1] {
+\newcommand{\rIncludeSection}[1] {
   \IfFileExists{./inc/#1/\ResumeVariant.tex}{
     \input{./inc/#1/\ResumeVariant}
   }{
