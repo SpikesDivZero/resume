@@ -188,7 +188,7 @@
   \end{list}
 }
 
-\def\rItemCategory#1{\textbf{#1}}
+\def\rItemCategory#1{#1}
 
 %----------------------------------------------------------------------------------------
 %	WORK EXPERIENCE VARIANT SUPPORT
