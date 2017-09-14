@@ -1,7 +1,7 @@
-VARIANTS := draft dev sre
+VARIANTS := draft general dev sre
 
-SCP_PREFIX := spikes_me@spikes.me:/home/spikes_me/spikes.me/notes
-HTTP_PREFIX := "https://spikes.me/notes"
+SCP_PREFIX := spikes_me@spikes.me:/home/spikes_me/spikes.me/resume/push
+HTTP_PREFIX := "https://spikes.me/resume/push"
 
 PDFLATEX := /usr/local/texlive/2017/bin/x86_64-darwin/pdflatex
 
@@ -105,12 +105,12 @@ build/%.pdf : spikes.tex resume.cls $(INCLUDES)
 
 .PHONY: publish/draft
 publish/draft: build/draft.pdf
-	scp "build/draft.pdf" "$(SCP_PREFIX)/resume-preview.pdf"
+	scp "build/draft.pdf" "$(SCP_PREFIX)/draft.pdf"
 	@echo
-	@echo Preview published to "$(HTTP_PREFIX)/resume-preview.pdf"
+	@echo Preview published to "$(HTTP_PREFIX)/draft.pdf"
 
 .PHONY: publish/%
 publish/% : build/%.pdf
-	scp "build//$*.pdf" "$(SCP_PREFIX)/resume-test-Spikes-Wesley-$*.pdf"
+	scp "build//$*.pdf" "$(SCP_PREFIX)/Spikes-Wesley-$*.pdf"
 	@echo
-	@echo Published "$*" variant to "$(HTTP_PREFIX)/resume-test-Spikes-Wesley-$*.pdf"
+	@echo Published "$*" variant to "$(HTTP_PREFIX)/Spikes-Wesley-$*.pdf"
