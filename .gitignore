@@ -3,3 +3,4 @@
 *.log
 *.synctex*
 /spikes.pdf
+*.fls
