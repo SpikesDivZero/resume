@@ -1,4 +1,5 @@
-VARIANTS := draft general dev sre
+VARIANTS := draft $(shell find inc -type f -depth 2 \
+	|cut -d/ -f3 |cut -d. -f1 |sort -u)
 
 PDFLATEX := /usr/local/texlive/2019/bin/x86_64-darwin/pdflatex
 
