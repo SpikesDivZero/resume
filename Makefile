@@ -1,8 +1,5 @@
 VARIANTS := draft general dev sre
 
-SCP_PREFIX := spikes_me@spikes.me:/home/spikes_me/spikes.me/resume/push
-HTTP_PREFIX := "https://spikes.me/resume/push"
-
 PDFLATEX := /usr/local/texlive/2017/bin/x86_64-darwin/pdflatex
 
 # The --recorder option is necessary for currfile to work correctly. Otherwise,
@@ -28,10 +25,6 @@ help:
 	#     Cleans up everything (distclean), then builds (twice!) to
 	#     have a complete build. See also the description of clean.
 	#
-	# publish:
-	#     Publish the PDFs to my domain, including draft/preview.
-	@echo '#     $(HTTP_PREFIX)'
-	#
 	# clean:
 	#     Cleans up the built PDFs. Does *NOT* clean up build artifacts,
 	#     since LaTeX needs them for the 'LastPage' bits in the footer.
@@ -49,9 +42,6 @@ help:
 
 .PHONY: build
 build: $(addprefix build/,$(PDFS))
-
-.PHONY: publish
-publish: $(addprefix publish/,$(VARIANTS))
 
 # Distclean to remove the cached number of pages, build (first build will warn
 # about page numbers, see comment on clean), clean the built PDFs, then build
@@ -102,15 +92,3 @@ build/draft.pdf : spikes.tex resume.cls $(INCLUDES)
 build/%.pdf : spikes.tex resume.cls $(INCLUDES)
 	@mkdir -pv build
 	"$(PDFLATEX)" $(PDFLATEX_OPTS) --jobname="$*" spikes.tex < /dev/null
-
-.PHONY: publish/draft
-publish/draft: build/draft.pdf
-	scp "build/draft.pdf" "$(SCP_PREFIX)/draft.pdf"
-	@echo
-	@echo Preview published to "$(HTTP_PREFIX)/draft.pdf"
-
-.PHONY: publish/%
-publish/% : build/%.pdf
-	scp "build//$*.pdf" "$(SCP_PREFIX)/Spikes-Wesley-$*.pdf"
-	@echo
-	@echo Published "$*" variant to "$(HTTP_PREFIX)/Spikes-Wesley-$*.pdf"
