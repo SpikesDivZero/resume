@@ -77,7 +77,7 @@ distclean:
 	rm -fv {spikes,resume}.{aux,log,pdf,synctex.gz*} || true
 
 .PHONY: commit
-commit: pdf
+commit: build
 	git add spikes.tex resume.cls $(INCLUDES)
 	@# My global gitignore ignores the build directory (so many projects
 	@# without a decent gitignore), but in this case, I actually do want to
