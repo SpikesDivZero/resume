@@ -29,7 +29,6 @@
 \usepackage[parfill]{parskip} % Remove paragraph indentation
 \usepackage{array} % Required for boldface (\bf and \bfseries) tabular columns
 \usepackage{ifthen} % Required for ifthenelse statements
-\usepackage{lastpage} % Required for header (page X of Y)
 \usepackage{fancyhdr} % Required for header
 \usepackage[nostamp]{draftwatermark} % Required for draft watermark.
 \usepackage{datetime2} % Required for draft watermark.
@@ -103,7 +102,7 @@
   % the header prints right (can't be at top of sheet). This isn't really ideal, but I don't know
   % of a better fix right now.
   \lhead{~ \\ ~ \\ \@name}
-  \rhead{~ \\ ~ \\ \thepage\ of \pageref{LastPage}}
+  \rhead{~ \\ ~ \\ \thepage}
 
   % The first page won't have a header, since it has the name on it already.
   \thispagestyle{empty}
