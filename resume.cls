@@ -113,11 +113,13 @@
   \printpageheader % Add the header first.
   \ori@document  % Begin document
   \printname % Print the name specified with \name
-  \@ifundefined{@addressone}{}{ % Print the first address if specified
+
+  % Print each address line, but only if specified
+  \@ifundefined{@addressone}{}{
     \printaddress{\@addressone}}
-  \@ifundefined{@addresstwo}{}{ % Print the second address if specified
+  \@ifundefined{@addresstwo}{}{
     \printaddress{\@addresstwo}}
-     \@ifundefined{@addressthree}{}{ % Print the third address if specified
+  \@ifundefined{@addressthree}{}{
     \printaddress{\@addressthree}}
 
   % If the jobname is the same as the *.tex filename, then we're in draft mode,
