@@ -33,6 +33,7 @@
 \usepackage[nostamp]{draftwatermark} % Required for draft watermark.
 \usepackage{datetime2} % Required for draft watermark.
 \usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
+\usepackage{xcolor}
 
 \pagestyle{fancy} % Disables built-in page numbering, and let's us use our own.
 
@@ -125,6 +126,8 @@
   % If the jobname is the same as the *.tex filename, then we're in draft mode,
   % most likely editing in TeXShop.
   \ifcurrfilebase{\jobname}{
+    % TeXShop has an ugly grey background by default, and the PDF seems otherwise transparent.
+    \pagecolor{white}
     \printdraftwatermark
   }
 }
