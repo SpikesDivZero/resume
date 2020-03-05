@@ -37,6 +37,11 @@
 
 \pagestyle{fancy} % Disables built-in page numbering, and let's us use our own.
 
+% Make a stable PDF build
+\pdfinfoomitdate=1 % Removes the /CreationDate and /ModDate entries in the document info dictionary
+\pdftrailerid{\jobname} % Stabilize the \ID in the PDF Trailer
+%\pdfsuppressptexinfo=-1 % Removes PTEX.Fullbanner -- probably not necessary for my case
+
 %----------------------------------------------------------------------------------------
 %	HEADINGS COMMANDS: Commands for printing name and address
 %----------------------------------------------------------------------------------------

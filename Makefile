@@ -1,4 +1,4 @@
-VARIANTS := draft $(shell find inc -type f -depth 2 \
+VARIANTS := $(shell find inc -type f -depth 2 \
 	|cut -d/ -f3 |cut -d. -f1 |sort -u)
 
 PDFLATEX := /usr/local/texlive/2019/bin/x86_64-darwin/pdflatex
@@ -19,7 +19,7 @@ help:
 	@echo '#     $(VARIANTS)'   # Yeah, that's a thing...
 	#
 	# build:
-	#     Create a PDF for the draft, as well as each of the variants.
+	#     Create a PDF for as each of the variants.
 	#     All resumes are written into the build/ directory.
 	#
 	# rebuild:
@@ -27,13 +27,7 @@ help:
 	#     have a complete build. See also the description of clean.
 	#
 	# clean:
-	#     Cleans up the built PDFs. Does *NOT* clean up build artifacts,
-	#     since LaTeX needs them for the 'LastPage' bits in the footer.
-	#     See the comments above the clean rule for more information.
-	#
-	# distclean:
-	#     Cleans up everything, including the build artifacts. It's not
-	#     reccomended to use this directly.
+	#     Cleans up the built PDFs, including with the build artifacts.
 	#
 	# commit:
 	#     Add any changes to the resume, including it's built PDFs, to
@@ -44,15 +38,9 @@ help:
 .PHONY: build
 build: $(addprefix build/,$(PDFS))
 
-# Distclean to remove the cached number of pages, build (first build will warn
-# about page numbers, see comment on clean), clean the built PDFs, then build
-# again to have fully built PDFs.
-#
-# We must specifically use shell to do the second build as make (intelligently)
-# keeps track of the fact that we already built the 'build' target and it's
-# dependencies.
+# Clean to remove the prior builds, then build.
 .PHONY: rebuild
-rebuild: distclean build clean
+rebuild: clean
 	$(MAKE) build
 
 # For a regular clean, we keep all of the intermediate files since one of them,
@@ -68,13 +56,8 @@ rebuild: distclean build clean
 .PHONY: clean
 clean:
 	@# When using TeXShop, it always builds into the main directory.
-	rm -v build/*.pdf {spikes,resume}.pdf || true
-
-.PHONY: distclean
-distclean:
 	rm -rv build/ || true
-	@# When using TeXShop, we generate cruft in the main directory.
-	rm -fv {spikes,resume}.{aux,log,pdf,synctex.gz*} || true
+	rm -v {spikes,resume}.{aux,log,pdf,synctex.gz*} || true
 
 .PHONY: commit
 commit: build
@@ -84,11 +67,6 @@ commit: build
 	@# track the progression of my resume PDFs, at least for now.
 	git add -f build/*.pdf
 	git commit -m 'Progress (auto-commit)'
-
-build/draft.pdf : spikes.tex resume.cls $(INCLUDES)
-	@mkdir -pv build
-	"$(PDFLATEX)" $(PDFLATEX_OPTS) spikes.tex < /dev/null
-	mv build/spikes.pdf build/draft.pdf
 
 build/%.pdf : spikes.tex resume.cls $(INCLUDES)
 	@mkdir -pv build
