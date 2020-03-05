@@ -4,3 +4,9 @@
 *.synctex*
 /spikes.pdf
 *.fls
+
+# Ignore everything in /build/ except PDFs.
+# The first rule here is to override my global gitignore
+!/build/
+/build/*
+!/build/*.pdf
