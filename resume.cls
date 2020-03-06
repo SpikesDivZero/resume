@@ -174,6 +174,10 @@
 %	WORK EXPERIENCE FORMATTING
 %----------------------------------------------------------------------------------------
 
+% A section for a single Work Experience.
+% Args:
+%   {company} {startDate - endDate}
+%   {title} {cityState}
 \newenvironment{rSubsection}[4]{ % 4 input arguments - company name, year(s) employed, job title and location
  {\bf #1} \hfill {#2} % Bold company name and date on the right
  \ifthenelse{\equal{#3}{}}{}{ % If the third argument is not specified, don't print the job title and location line
@@ -186,6 +190,17 @@
   \end{list}
   \vspace{0.5em} % Some space after the list of bullet points
   \pagebreak[2] % Encourage pagebreaks between jobs, instead of in the middle of our lists
+}
+
+% General work experience formatter.
+% Args:
+%   {company} {cityState}
+%   {title} {startDate} {endDate}
+%   {includesDir}
+\newcommand{\workExperience}[6] {
+  \begin{rSubsection}{#1}{#4 - #5}{#3}{#2}
+    \rIncludeSection{#6}
+  \end{rSubsection}
 }
 
 % A simple \begin{list} doesn't work in a rSubsection, so we'll wrap it up all necessary
