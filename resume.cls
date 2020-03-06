@@ -192,14 +192,16 @@
   \pagebreak[2] % Encourage pagebreaks between jobs, instead of in the middle of our lists
 }
 
-% General work experience formatter.
-% Args:
-%   {company} {cityState}
-%   {title} {startDate} {endDate}
-%   {includesDir}
-\newcommand{\workExperience}[6] {
-  \begin{rSubsection}{#1}{#4 - #5}{#3}{#2}
-    \rIncludeSection{#6}
+% General work experience loader and formatter.
+%
+% Only arg is the folder name from the includes directory.
+%
+% The job metadata in inc/DIR/metadata.tex is used to begin the rSubsection.
+% rIncludeSection then determines the content variant to use when rendering the resume.
+\newcommand{\workExperience}[1] {
+  \input{./inc/#1/metadata}
+  \begin{rSubsection}{\company}{\startDate\ - \endDate}{\title}{\cityState}
+    \rIncludeSection{#1}
   \end{rSubsection}
 }
 
