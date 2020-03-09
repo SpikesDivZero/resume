@@ -1,4 +1,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Original header below, for attribution. However, this resume class is now
+% fairly distinct and notably restyled.
+%
+% While the oringal visual appearance tends to be the same, the underlying
+% wiring has changed dramatically over time.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Medium Length Professional CV - RESUME CLASS FILE
 %
 % This template has been downloaded from:
@@ -15,232 +21,192 @@
 % without any warranty.
 %
 % Created by Trey Hunner and modified by www.LaTeXTemplates.com
-%
-% Further modified by Wesley Spikes for my own ends.
-%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{resume}[2020/03/08 v0.10.0 Resume class]  % YYYY/MM/DD
 
-\ProvidesClass{resume}[2017/02/28 v0.9.1 Resume class]
+\LoadClass[11pt,letterpaper]{article}
 
-\LoadClass[11pt,letterpaper]{article} % Font size and paper type
+\RequirePackage[realmainfile]{currfile}
+\RequirePackage[parfill]{parskip} % Remove paragraph indentation
+\RequirePackage[
+  left=0.75in,right=0.75in,
+  top=0.4in,bottom=0.4in,
+  includehead=true,
+  headheight=14pt,  % Silence fancyhdr warning
+  headsep=6pt,
+]{geometry}
+\RequirePackage{xcolor}
+\RequirePackage{fancyhdr}
+\RequirePackage[nostamp]{draftwatermark}
+\RequirePackage{datetime2}
 
-\usepackage[realmainfile]{currfile}
+\pagestyle{fancy}  % Has to be in our preamble
 
-\usepackage[parfill]{parskip} % Remove paragraph indentation
-\usepackage{array} % Required for boldface (\bf and \bfseries) tabular columns
-\usepackage{ifthen} % Required for ifthenelse statements
-\usepackage{fancyhdr} % Required for header
-\usepackage[nostamp]{draftwatermark} % Required for draft watermark.
-\usepackage{datetime2} % Required for draft watermark.
-\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
-\usepackage{xcolor}
-
-\pagestyle{fancy} % Disables built-in page numbering, and let's us use our own.
-
+%
 % Make a stable PDF build
-\pdfinfoomitdate=1 % Removes the /CreationDate and /ModDate entries in the document info dictionary
-\pdftrailerid{\jobname} % Stabilize the \ID in the PDF Trailer
-%\pdfsuppressptexinfo=-1 % Removes PTEX.Fullbanner -- probably not necessary for my case
-
-%----------------------------------------------------------------------------------------
-%	HEADINGS COMMANDS: Commands for printing name and address
-%----------------------------------------------------------------------------------------
-
-\def \name#1{\def\@name{#1}} % Defines the \name command to set name
-\def \@name {} % Sets \@name to empty by default
-
-\def \addressSep {$\diamond$} % Set default address separator to a diamond
-
-% One, two or three address lines can be specified 
-\let \@addressone \relax
-\let \@addresstwo \relax
-\let \@addressthree \relax
-
-% \address command can be used to set the first, second, and third address (last 2 optional)
-\def \address #1{
-  \@ifundefined{@addresstwo}{
-    \def \@addresstwo {#1}
-  }{
-  \@ifundefined{@addressthree}{
-  \def \@addressthree {#1}
-  }{
-     \def \@addressone {#1}
-  }}
-}
-
-% \printaddress is used to style an address line (given as input)
-\def \printaddress #1{
-  \begingroup
-    \def \\ {\addressSep\ }
-    \centerline{#1}
-  \endgroup
-  \par
-  \addressskip
-}
-
-% \printname is used to print the name as a page header
-\def \printname {
-  \begingroup
-    \hfil{\MakeUppercase{\namesize\bf \@name}}\hfil
-    \nameskip\break
-  \endgroup
-}
-
-%----------------------------------------------------------------------------------------
-%	PRINT THE HEADING LINES
-%----------------------------------------------------------------------------------------
-
-% This must be called by the document start (below here), so that it's always
-% printed on the first page. This is because we use \thispagestyle here.
-\def \printpageheader {
-  \fancyhf{}
-
-  % Silence a warning where fancyhdr is auto-growing this to 13.5999
-  \headheight 13.6pt
-
-  % I'm ashamed to say, I don't understand how this fixes it, but this does fix the
-  % issue where the header isn't full-width on the second (and likely beyond) pages.
-  % I'm estimating that this forces fancyhdr to recalculate based on the updated
-  % geometry since it was first loaded?
-  \fancyheadoffset[lh]{0pt}%
-
-  % FIXME: The "~ \\ ~ \\" here is to force the header to be ~ 12pt further down, so that
-  % the header prints right (can't be at top of sheet). This isn't really ideal, but I don't know
-  % of a better fix right now.
-  \lhead{~ \\ ~ \\ \@name}
-  \rhead{~ \\ ~ \\ \thepage}
-
-  % The first page won't have a header, since it has the name on it already.
-  \thispagestyle{empty}
-}
-
-\let\ori@document=\document
-\renewcommand{\document}{
-  \printpageheader % Add the header first.
-  \ori@document  % Begin document
-  \printname % Print the name specified with \name
-
-  % Print each address line, but only if specified
-  \@ifundefined{@addressone}{}{
-    \printaddress{\@addressone}}
-  \@ifundefined{@addresstwo}{}{
-    \printaddress{\@addresstwo}}
-  \@ifundefined{@addressthree}{}{
-    \printaddress{\@addressthree}}
-
-  % If the jobname is the same as the *.tex filename, then we're in draft mode,
-  % most likely editing in TeXShop.
-  \ifcurrfilebase{\jobname}{
-    % TeXShop has an ugly grey background by default, and the PDF seems otherwise transparent.
-    \pagecolor{white}
-    \printdraftwatermark
-  }
-}
-
-%----------------------------------------------------------------------------------------
-%	DRAFT WATERMARKING
-%----------------------------------------------------------------------------------------
-
-% Call this to print a watermark on every page with the date and time,
-% clearly tagging the document as a draft. Date and time is just so I can
-% keep track of which draft is which. (I'm re-using the backside of printed
-% drafts when reviewing/editing.)
-\def \printdraftwatermark {
-  \SetWatermarkText{DRAFT \DTMnow}
-  \SetWatermarkScale{2}
-  \SetWatermarkColor[rgb]{0.8,0.8,0.8}
-  \@sc@wm@stamptrue
-}
-
-%----------------------------------------------------------------------------------------
-%	SECTION FORMATTING
-%----------------------------------------------------------------------------------------
-
-% Defines the rSection environment for the large sections within the CV
-\newenvironment{rSection}[1]{ % 1 input argument - section name
-  \sectionskip
-  \MakeUppercase{\bf #1} % Section title
-  \sectionlineskip
-  \hrule % Horizontal line
-  \begin{list}{}{ % List for each individual item in the section
-    \setlength{\leftmargin}{1.5em} % Margin within the section
-  }
-  \item[]
-}{
-  \end{list}
-}
-
-%----------------------------------------------------------------------------------------
-%	WORK EXPERIENCE FORMATTING
-%----------------------------------------------------------------------------------------
-
-% A section for a single Work Experience.
-% Args:
-%   {company} {startDate - endDate}
-%   {title} {cityState}
-\newenvironment{rSubsection}[4]{ % 4 input arguments - company name, year(s) employed, job title and location
- {\bf #1} \hfill {#2} % Bold company name and date on the right
- \ifthenelse{\equal{#3}{}}{}{ % If the third argument is not specified, don't print the job title and location line
-  \\
-  {\em #3} \hfill {\em #4} % Italic job title and location
-  }\smallskip
-  \begin{list}{$\cdot$}{\leftmargin=0em} % \cdot used for bullets, no indentation
-   \itemsep -0.5em \vspace{-0.5em} % Compress items in list together for aesthetics
-}{
-  \end{list}
-  \vspace{0.5em} % Some space after the list of bullet points
-  \pagebreak[2] % Encourage pagebreaks between jobs, instead of in the middle of our lists
-}
-
-% General work experience loader and formatter.
+% * Removes the /CreationDate and /ModDate entries in the document info dictionary
+% * Stabilize the \ID in the PDF Trailer
 %
-% Only arg is the folder name from the includes directory.
+\pdfinfoomitdate=1
+\pdftrailerid{\jobname}
+
+
 %
-% The job metadata in inc/DIR/metadata.tex is used to begin the rSubsection.
-% rIncludeSection then determines the content variant to use when rendering the resume.
-\newcommand{\workExperience}[1] {
-  \input{./inc/#1/metadata}
-  \begin{rSubsection}{\company}{\startDate\ - \endDate}{\title}{\cityState}
-    \rIncludeSection{#1}
-  \end{rSubsection}
-}
+% Variables, contact info, etc.
+%
+% Use \def to set these before you begin your document.
+%
+% In the \@address* fields, you can use \\ to add an appropriate separator between lines.
+%
+\def \@name {}
+\def \name#1 {\def \@name{#1}}
 
-% A simple \begin{list} doesn't work in a rSubsection, so we'll wrap it up all necessary
-% formatting like so. There's got to be a better way to do this, right?
-\newenvironment{rSubsectionSublist}[0] {
-  \begin{list}{$\cdot$}{\leftmargin=2.0em} % \cdot used for bullets, no indentation
-    \itemsep -0.5em \vspace{-0.5em} % Compress items in list together for aesthetics
-}{
-  \end{list}
-}
+\def \@address {}
+\def \address #1 {\def \@address{#1}}
 
-%----------------------------------------------------------------------------------------
-%	WORK EXPERIENCE VARIANT SUPPORT
-%----------------------------------------------------------------------------------------
+\def \@phone {}
+\def \phone#1 {\def \@phone{#1}}
 
-% And we'll use this to include job highlights for each position.
-\let \ResumeVariant \relax
-\newcommand{\SetResumeVariant}[1] {
-  % If the jobname is the same as the *.tex filename, then we're in draft mode,
-  % most likely editing in TeXShop.
-  \ifcurrfilebase{\jobname}{
-    \def \ResumeVariant {#1}
+\def \@email {}
+\def \email#1 {\def \@email{#1}}
+
+%
+% Variant support.
+%
+% When \jobname is the same as the basename of the filename, then we use the default variant.
+% Otherwise, we use \jobname for the variant.
+%
+% jobname is passed on the command line of pdflatex, as "-jobname=STRING"
+%
+\def \@draftVariant {dev}
+\def \@variant {}
+\def \computeVariant {  % Called at document begin
+  \ifdraft{
+    \let \@variant \@draftVariant
   }{
-    \def \ResumeVariant {\jobname}
+    \let \@variant \jobname
   }
 }
 
-\newcommand{\rIncludeSection}[1] {
-  \IfFileExists{./inc/#1/\ResumeVariant.tex}{
-    \input{./inc/#1/\ResumeVariant}
+% Include the variant from an include directory, if it exists. If not, generic.tex is used instead.
+\newcommand{\includeVariant}[1] {
+  \IfFileExists{./inc/#1/\@variant.tex}{
+    \input{./inc/#1/\@variant}
   }{
     \input{./inc/#1/generic}
   }
 }
 
-% The below commands define the whitespace after certain things in the document - they can be \smallskip, \medskip or \bigskip
-\def\namesize{\huge} % Size of the name at the top of the document
-\def\addressskip{\smallskip} % The space between the two address (or phone/email) lines
-\def\sectionlineskip{\medskip} % The space above the horizontal line for each section 
-\def\nameskip{\bigskip} % The space after your name at the top
-\def\sectionskip{\medskip} % The space after the heading section
+
+
+%
+% Header
+%
+\def \namesize         {\huge}
+\def \nameSkip         {\bigskip}
+\def \addressSkip      {\smallskip}
+\def \addressSeparator {$\diamond$}
+
+\def \printNameLine {
+  \hfil{\MakeUppercase{\namesize\bf \@name}}
+  \hfil\nameSkip\break
+}
+
+\def \printAddressLine#1 {
+  \begingroup
+    \def \\ {\addressSeparator\ }
+    \centerline{#1}
+  \endgroup
+  \par
+  \addressSkip
+}
+
+\renewcommand{\maketitle}{
+  \printNameLine
+  \printAddressLine{\@address}
+  \printAddressLine{\@phone\ \\ \@email}
+}
+
+\newcommand{\ifdraft}[2] {
+  % If the jobname is the same as the *.tex filename, then we're in draft mode,
+  % most likely editing in TeXShop.
+  \ifcurrfilebase{\jobname}{#1}{#2}
+}
+
+
+%
+% Page Headers
+%
+\def \makePageHeaders {
+  \fancyhf{}
+  \fancyhead[L]{\@name}
+  \fancyhead[R]{\thepage}
+  \thispagestyle{empty}
+}
+
+
+%
+% A generic resume section
+%
+\def \sectionSkipBeforeHeader {\medskip}
+\def \sectionSkipAfterHeader  {\medskip}
+
+\renewenvironment{section}[1] {
+  \sectionSkipBeforeHeader
+  \MakeUppercase{\bf #1}
+  \sectionSkipAfterHeader
+  \hrule
+  \begin{list}{}{
+    \setlength{\leftmargin}{1.5em} % Margin within the section
+  }
+  % Include an empty item here so we can reuse this environment to also contain a non-itemized section (e.g., Summary)
+  \item[]
+}{
+  \end{list}
+}
+
+
+%
+% A Work-experience specialized helper.
+%
+% This uses files in inc/#1/ to render the work experience, as such:
+%
+% * metadata.tex contains the job basics -- title, company, etc
+% * {variant}.tex contains the description for the job. If that doesn't exist, we use generic.tex instead.
+%
+\newcommand{\workExperience}[1] {
+  \input{./inc/#1/metadata}
+  {\bf \company} \hfill {\startDate - \endDate}
+  \\
+  {\em \title} \hfill {\em \cityState}
+  \smallskip
+  \begin{list}{$\cdot$}{\leftmargin=0em}
+    \itemsep -0.5em \vspace{-0.5em}
+    \includeVariant{#1}
+  \end{list}
+  \vspace{0.5em}
+  \pagebreak[2]  % Encourage pagebreaks between jobs, instead of in the middle of lists
+}
+
+
+%
+% In order to KISS, we'll wrap up the document to automatically add the header and such.
+%
+\let\ori@document=\document
+\renewcommand{\document}{
+  \makePageHeaders
+  \ori@document
+  \computeVariant
+  \maketitle
+  \ifdraft{
+    % TeXShop has an ugly grey background by default, and the PDF seems otherwise transparent.
+    \pagecolor{white}
+
+    % Include a draft watermark
+    \SetWatermarkText{DRAFT \DTMnow}
+    \SetWatermarkScale{2}
+    \SetWatermarkColor[rgb]{0.8,0.8,0.8}
+    \@sc@wm@stamptrue
+  }
+}{}

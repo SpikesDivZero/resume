@@ -1,83 +1,36 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Medium Length Professional CV
-% LaTeX Template
-% Version 2.0 (8/5/13)
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-%
-% Original author:
-% Trey Hunner (http://www.treyhunner.com/)
-%
-% Important note:
-% This template requires the resume.cls file to be in the same directory as the
-% .tex file. The resume.cls file provides the resume style used for structuring the
-% document.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 % In general, Cyrus writes "The only thing I can think of is removing sabbatical whenever
 % a cover letter is required. Also if you're looking for a management position, possibly
 % emphasize things that involve teamwork, project management, anything that would
 % require social intelligence."
 
+\documentclass{resume}
 
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
-
-\documentclass{resume} % Use the custom resume.cls style
+\usepackage{array} % \bfseries tabular columns
 
 \name{Wesley Spikes}
 \address{1200 NW Marshall St, Ste 706 \\ Portland, OR 97209}
-\address{909.815.1079 \\ wesley.spikes@gmail.com}
-
-% The hard-coded value is used by resume.cls when in draft mode (jobname == filename).
-% Otherwise, we use \jobname (set on the command line)
-\SetResumeVariant{dev}
+\phone{909.815.1079}
+\email{wesley.spikes@gmail.com}
 
 \begin{document}
 
+\begin{section}{Summary}
+  \includeVariant{summary}
+\end{section}
 
+\begin{section}{Technical Strengths}
+  \begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
+    Computer Languages & Go, Python, Bash, SQL, Perl, \LaTeX \\
+    Operating Systems & Linux (CentOS, Gentoo, Ubuntu), OS X \\
+  \end{tabular}
+\end{section}
 
-%----------------------------------------------------------------------------------------
-%	SUMMARY
-%----------------------------------------------------------------------------------------
-
-\begin{rSection}{Summary}
-\rIncludeSection{summary}
-\end{rSection}
-
-%----------------------------------------------------------------------------------------
-%	TECHNICAL STRENGTHS SECTION
-%----------------------------------------------------------------------------------------
-
-\begin{rSection}{Technical Strengths}
-
-\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
-Computer Languages & Go, Python, Bash, SQL, Perl, \LaTeX \\
-Operating Systems & Linux (CentOS, Gentoo, Ubuntu), OS X \\
-% Software & git, vim \\
-%Concepts & Application Security, CI/CD, Systems Configuration
-\end{tabular}
-
-\end{rSection}
-
-%----------------------------------------------------------------------------------------
-%	WORK EXPERIENCE SECTION
-%----------------------------------------------------------------------------------------
-
-\begin{rSection}{Experience}
-
-\workExperience{2017-squarespace-srsre}
-\workExperience{2014-dreamhost-srdev}
-\workExperience{2011-dreamhost-dev}
-\workExperience{2009-dreamhost-support}
-\workExperience{2006-pageprovider-sysadm}
-
-\end{rSection}
-
-%----------------------------------------------------------------------------------------
+\begin{section}{Experience}
+  \workExperience{2017-squarespace-srsre}
+  \workExperience{2014-dreamhost-srdev}
+  \workExperience{2011-dreamhost-dev}
+  \workExperience{2009-dreamhost-support}
+  \workExperience{2006-pageprovider-sysadm}
+\end{section}
 
 \end{document}
