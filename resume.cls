@@ -177,7 +177,7 @@
 %
 \newcommand{\workExperience}[1] {
   \input{./inc/#1/metadata}
-  {\bf \company} \hfill {\startDate - \endDate}
+  {\bf \company} \hfill {\startDate\ - \endDate}
   \\
   {\em \title} \hfill {\em \cityState}
   \smallskip
