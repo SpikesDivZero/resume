@@ -38,7 +38,7 @@
 ]{geometry}
 \RequirePackage{xcolor}
 \RequirePackage{fancyhdr}
-\RequirePackage[nostamp]{draftwatermark}
+\RequirePackage[stamp=false]{draftwatermark}
 \RequirePackage{datetime2}
 
 \pagestyle{fancy}  % Has to be in our preamble
@@ -204,9 +204,9 @@
     \pagecolor{white}
 
     % Include a draft watermark
-    \SetWatermarkText{DRAFT \DTMnow}
-    \SetWatermarkScale{2}
-    \SetWatermarkColor[rgb]{0.8,0.8,0.8}
-    \@sc@wm@stamptrue
+    \DraftwatermarkOptions{text={DRAFT \DTMnow}}
+    \DraftwatermarkOptions{scale=2}
+    \DraftwatermarkOptions{color={[rgb]{0.8,0.8,0.8}}}
+    \DraftwatermarkOptions{stamp=true}
   }
 }{}
