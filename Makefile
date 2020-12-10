@@ -1,7 +1,7 @@
 VARIANTS := $(shell find inc -type f -depth 2 \
 	|cut -d/ -f3 |cut -d. -f1 |sort -u |grep -v '^metadata$$')
 
-PDFLATEX := /usr/local/texlive/2019/bin/x86_64-darwin/pdflatex
+PDFLATEX := /usr/local/texlive/2020/bin/x86_64-darwin/pdflatex
 
 # The --recorder option is necessary for currfile to work correctly. Otherwise,
 # currfilebase is always the same as jobname, and our variant stuff doesn't
