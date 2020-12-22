@@ -1,16 +1,16 @@
-% In general, Cyrus writes "[...] If you're looking for a management position, possibly emphasize things that involve
-% teamwork, project management, anything that would require social intelligence."
-
 \documentclass{resume}
 
-\usepackage{array} % \bfseries tabular columns
+\usepackage{array}  % Used in inc/skills - bfseries, tabular, columns
 
-\name{Wesley Spikes}
-\citystate{Portland, OR}
-\phone{909.815.1079}
-\email{wesley.spikes@gmail.com}
-% TODO: ORR recc 
-% TODO: ORR recc add LinkedIn
+\name     {Wesley Spikes}
+\location {Portland, OR}
+\phone    {909.815.1079}
+\email    {wesley.spikes@gmail.com}
+\linkedin {https://www.linkedin.com/in/wspikes/}
+
+% To test a variant (e.g., for a specific role or company) in TeXShop, just change this.
+% This value is ignored in our pdflatex build, where jobname is used instead.
+\draftVariant{draft}
 
 \begin{document}
 
@@ -19,18 +19,27 @@
 \end{section}
 
 \begin{section}{Technical Strengths}
-  \begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
-    Computer Languages & Go, Python, Bash, SQL, Perl, \LaTeX \\
-    Operating Systems & Linux (CentOS, Gentoo, Ubuntu), OS X \\
-  \end{tabular}
+  \includeVariant{skills}
 \end{section}
 
 \begin{section}{Experience}
-  \workExperience{2017-squarespace-srsre}
-  \workExperience{2014-dreamhost-srdev}
-  \workExperience{2011-dreamhost-dev}
-  \workExperience{2009-dreamhost-support}
-  \workExperience{2006-pageprovider-sysadm}
+  \includeCompany{squarespace}
+  \includeCompany{dreamhost}
 \end{section}
+
+\break
+
+% TODO: ORR recommends adding this. I don't know how I feel about it, given lack of prestige. Their rationale for adding
+% is in case of an ATS auto-rejecting for lack of an education keyword.
+%\begin{section}{Education}
+%  {\bf Mt. San Antonio College} \hfill Walnut, CA \\
+%\end{section}
+
+% TODO: ORR recommends adding this. Shows personality/interests, and is a place to brag about other things (or maybe
+% even add keywords for ATS)
+%\begin{section}{Additional Information}
+%  {\bf Volunteer}: [ADD IF APPLICABLE] \\
+%  {\bf Interests}: [ADD] \\
+%\end{section}
 
 \end{document}
