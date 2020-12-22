@@ -57,13 +57,11 @@
 %
 % Use \def to set these before you begin your document.
 %
-% In the \@address* fields, you can use \\ to add an appropriate separator between lines.
-%
 \def \@name {}
 \def \name#1 {\def \@name{#1}}
 
-\def \@address {}
-\def \address #1 {\def \@address{#1}}
+\def \@citystate {}
+\def \citystate #1 {\def \@citystate{#1}}
 
 \def \@phone {}
 \def \phone#1 {\def \@phone{#1}}
@@ -103,10 +101,10 @@
 %
 % Header
 %
-\def \namesize         {\huge}
-\def \nameSkip         {\bigskip}
+\def \namesize         {\Large}
+\def \nameSkip         {\smallskip}
 \def \addressSkip      {\smallskip}
-\def \addressSeparator {$\diamond$}
+\def \addressSeparator {$|$}
 
 \def \printNameLine {
   \hfil{\MakeUppercase{\namesize\bf \@name}}
@@ -124,8 +122,7 @@
 
 \renewcommand{\maketitle}{
   \printNameLine
-  \printAddressLine{\@address}
-  \printAddressLine{\@phone\ \\ \@email}
+  \printAddressLine{\@citystate\ \\ \@phone\ \\ \@email}
 }
 
 \newcommand{\ifdraft}[2] {
