@@ -12,7 +12,7 @@
 % This template has been downloaded from:
 % http://www.LaTeXTemplates.com
 %
-% This class file defines the structure and design of the template. 
+% This class file defines the structure and design of the template.
 %
 % Original header:
 % Copyright (C) 2010 by Trey Hunner
