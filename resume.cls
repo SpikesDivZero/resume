@@ -6,6 +6,11 @@
 %
 % Given the sheer volume of changes, I'm unable to say what % of this is the same as Trey originally authored.
 % Accordingly, I'm preserving his original header below, but all blame for faults rests solely upon my shoulders.
+%
+% NOTE ON LICENSING:
+% The license below applies only to Trey's original works, as found on LaTeXTemplates.com.
+% This derivative is licensed as defined in the LICENSE file, in the root of the Spikes' resume repository.
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Medium Length Professional CV - RESUME CLASS FILE
 %
