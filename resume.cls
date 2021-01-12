@@ -43,7 +43,10 @@
 ]{geometry}
 \RequirePackage[parfill]{parskip}  % Remove paragraph indentation
 \RequirePackage{xcolor}
-\RequirePackage[colorlinks=true,urlcolor=blue]{hyperref}
+\RequirePackage[
+  colorlinks=true,urlcolor=blue,
+  bookmarks=false,  % Remove the need to build it twice; we're not using bookmarks
+]{hyperref}
 \RequirePackage[realmainfile]{currfile}
 \RequirePackage[stamp=false]{draftwatermark}
 \RequirePackage{datetime2}
