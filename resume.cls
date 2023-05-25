@@ -69,7 +69,7 @@
 
 \renewcommand{\maketitle}{
   % Name line
-  \centerline{\MakeUppercase{\nameSize\bf \@name}}
+  \centerline{\MakeUppercase{\nameSize\textbf{\@name}}}
   \nameSkip
 
   % Address Line
@@ -96,7 +96,7 @@
 
 \renewenvironment{section}[1] {
   \sectionSkipBeforeHeader
-  \MakeUppercase{\bf #1}
+  \MakeUppercase{\textbf{#1}}
   \sectionSkipAfterHeader
   \hrule
 }{}
@@ -171,7 +171,7 @@
   \begingroup
     \def \@company {#1}
     \input{./inc/#1}
-    {\bf \@companyName} \hfill \@companyLocation \\
+    {\textbf \@companyName} \hfill \@companyLocation \\
     \@companyJobs
   \endgroup
 }
@@ -190,7 +190,7 @@
     \def \@companyJob {\@company/#1}
     \toggletrue{jobDutiesIsList}
     \input{./inc/\@companyJob/metadata.tex}
-    {\em \@jobTitle} \hfill \@jobStart\ -- \@jobEnd \\
+    {\textit \@jobTitle} \hfill \@jobStart\ -- \@jobEnd \\
     \iftoggle{jobDutiesIsList}{
       \vspace{-2em}  % FIXME: This is a hack to deal with excessive whitespace. I don't like it.
       \begin{list}{$\cdot$}{\leftmargin=1em}
