@@ -184,13 +184,17 @@
 \def \jobStart#1 {\def \@jobStart {#1}}
 \def \jobEnd#1   {\def \@jobEnd   {#1}}
 \newtoggle{jobDutiesIsList}  % Has to be global, unfortunately.
+\newtoggle{incldueJobTitleLine}
 
 \newcommand{\includeJob}[1] {
   \begingroup
     \def \@companyJob {\@company/#1}
     \toggletrue{jobDutiesIsList}
+    \toggletrue{incldueJobTitleLine}
     \input{./inc/\@companyJob/metadata.tex}
-    {\textit \@jobTitle} \hfill \@jobStart\ -- \@jobEnd \\
+    \iftoggle{incldueJobTitleLine}{
+      {\textit \@jobTitle} \hfill \@jobStart\ -- \@jobEnd \\
+    }{}
     \iftoggle{jobDutiesIsList}{
       \vspace{-2em}  % FIXME: This is a hack to deal with excessive whitespace. I don't like it.
       \begin{list}{$\cdot$}{\leftmargin=1em}
