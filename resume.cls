@@ -170,7 +170,7 @@
 \newcommand{\includeCompany}[1] {
   \begingroup
     \def \@company {#1}
-    \input{./inc/#1}
+    \input{./inc/#1/metadata.tex}
     {\textbf \@companyName} \hfill \@companyLocation \\
     \@companyJobs
   \endgroup
